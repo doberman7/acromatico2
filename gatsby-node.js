@@ -1,42 +1,39 @@
-const Promise = require('bluebird')
-const path = require('path')
+const Promise = require("bluebird");
+const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
+    const blogPost = path.resolve("./src/templates/blog-post-contentful.js");
     resolve(
       graphql(
         `
           {
-            allContentfulBlogPost {
+            allContentfulPost {
               edges {
                 node {
-                  title
                   slug
+                  title
                 }
               }
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
+          console.log(result.errors);
+          reject(result.errors);
         }
 
-        const posts = result.data.allContentfulBlogPost.edges
-        posts.forEach(post => {
-          createPage({
-            path: `/blog/${post.node.slug}/`,
-            component: blogPost,
-            context: {
-              slug: post.node.slug,
-            },
-          })
-        })
+        const posts = result.data.allContentfulPost.edges;
+        console.log(posts);
+        posts.forEach((post, index) => {
+          const previous = index === 0 ? null : posts[index - 1].node;
+          const next =
+            index === posts.length - 1 ? null : posts[index + 1].node;
+        });
       })
-    )
-  })
-}
+    );
+  });
+};
