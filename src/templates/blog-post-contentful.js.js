@@ -7,13 +7,14 @@ import Layout from "../components/layout";
 
 import heroStyles from "../components/hero.module.css";
 
-class BlogPostTemplate extends React.Component {
+class BlogPostContentfulTemplate extends React.Component {
   render() {
-    const post = get(this.props, "data.contentfulBlogPost");
+    const post = get(this.data.allContentfulPost);
     const siteTitle = get(this.props, "data.site.siteMetadata.title");
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={posts.location}>
         <div style={{ background: "#fff" }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className={heroStyles.hero}>
@@ -44,23 +45,25 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate;
+export default BlogPostContentfulTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    // contentfulBlogPost(slug: { eq: $slug }) {
-    //   title
-    //   publishDate(formatString: "MMMM Do, YYYY")
-    //   heroImage {
-    //     fluid(maxWidth: 1180, background: "rgb:000000") {
-    //       ...GatsbyContentfulFluid_tracedSVG
-    //     }
-    //   }
-    //   body {
-    //     childMarkdownRemark {
-    //       html
-    //     }
-    //   }
+  query ContentfulBlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+        author
+      }
+    }
+
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      author
+      content {
+        // childContentfulRichText {
+        //   html
+        // }
+      }
     }
   }
 `;
