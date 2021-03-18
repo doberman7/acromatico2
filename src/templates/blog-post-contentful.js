@@ -12,6 +12,8 @@ class BlogPostContentfulTemplate extends React.Component {
     const post = this.props.data.contentfulPost;
     const siteTitle = get(this.props, "data.site.siteMetadata.title");
     const { previous, next } = this.props.pageContext;
+    console.log({ ...post });
+
     return (
       <Layout location={post.location}>
         <div style={{ background: "#fff" }}>
@@ -65,6 +67,12 @@ export const pageQuery = graphql`
       slug
       content {
         content
+      }
+      media {
+        file {
+          contentType
+          url
+        }
       }
     }
   }

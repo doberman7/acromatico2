@@ -13,7 +13,6 @@ class RootIndex extends React.Component {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allContentfulPost.edges;
-    console.log(data);
 
     return (
       <Layout location={this.props.location}>
