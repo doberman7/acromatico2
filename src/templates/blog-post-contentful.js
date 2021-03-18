@@ -9,12 +9,12 @@ import heroStyles from "../components/hero.module.css";
 
 class BlogPostContentfulTemplate extends React.Component {
   render() {
-    const post = get(this.data.allContentfulPost);
+    const post = this.props.data.allContentfulPost;
     const siteTitle = get(this.props, "data.site.siteMetadata.title");
     const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout location={posts.location}>
+      <Layout location={post.location}>
         <div style={{ background: "#fff" }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className={heroStyles.hero}>
@@ -54,6 +54,11 @@ export const pageQuery = graphql`
         title
         author
       }
+    }
+
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      author
     }
   }
 `;
