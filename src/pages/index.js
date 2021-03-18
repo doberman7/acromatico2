@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
 import ArticlePreview from "../components/article-preview";
+import styles from "./blog.module.css";
 
 class RootIndex extends React.Component {
   render() {
@@ -17,6 +18,8 @@ class RootIndex extends React.Component {
       <Layout location={this.props.location}>
         <div style={{ background: "#fff" }}>
           <Helmet title={siteTitle} />
+          <div className={styles.hero}>Blog</div>
+
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">

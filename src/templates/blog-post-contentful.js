@@ -9,20 +9,20 @@ import heroStyles from "../components/hero.module.css";
 
 class BlogPostContentfulTemplate extends React.Component {
   render() {
-    const post = this.props.data.allContentfulPost;
+    const post = this.props.data.contentfulPost;
     const siteTitle = get(this.props, "data.site.siteMetadata.title");
     const { previous, next } = this.props.pageContext;
-
+    console.log(post);
     return (
       <Layout location={post.location}>
         <div style={{ background: "#fff" }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          {/* <Helmet title={`${post.title} | ${siteTitle}`} /> */}
           <div className={heroStyles.hero}>
-            <Img
+            {/* <Img
               className={heroStyles.heroImage}
               alt={post.title}
               fluid={post.heroImage.fluid}
-            />
+            /> */}
           </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
@@ -33,11 +33,11 @@ class BlogPostContentfulTemplate extends React.Component {
             >
               {post.publishDate}
             </p>
-            <div
+            {/* <div
               dangerouslySetInnerHTML={{
                 __html: post.body.childMarkdownRemark.html,
               }}
-            />
+            /> */}
           </div>
         </div>
       </Layout>
