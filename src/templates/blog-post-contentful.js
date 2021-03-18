@@ -55,15 +55,5 @@ export const pageQuery = graphql`
         author
       }
     }
-
-    contentfulPost(slug: { eq: $slug }) {
-      title
-      author
-      content {
-        // childContentfulRichText {
-        //   html
-        // }
-      }
-    }
   }
 `;
