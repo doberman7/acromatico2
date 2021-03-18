@@ -6,13 +6,14 @@ import Hero from "../components/hero";
 import Layout from "../components/layout";
 import ArticlePreview from "../components/article-preview";
 import styles from "./blog.module.css";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 class RootIndex extends React.Component {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allContentfulPost.edges;
-    // const [author] = get(this, "props.data.allContentfulPerson.edges");
+    console.log(data);
 
     return (
       <Layout location={this.props.location}>
@@ -55,6 +56,9 @@ export const pageQuery = graphql`
           subtitle
           author
           slug
+          media {
+            id
+          }
         }
       }
     }
