@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import get from "lodash/get";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import heroStyles from "../components/hero.module.css";
 
@@ -32,17 +33,17 @@ class BlogPostContentfulTemplate extends React.Component {
                 display: "block",
               }}
             >
-              by {post.author}
+              By: {post.author}
             </p>
             <p
               style={{
                 display: "block",
               }}
             >
-              subtitle {post.subtitle}
+              SUBTITTLE: {post.subtitle}
             </p>
 
-            <p>CONTENT: {post.content.content}</p>
+            <p> {documentToReactComponents(post.content.json)}</p>
           </div>
         </div>
       </Layout>
@@ -66,7 +67,7 @@ export const pageQuery = graphql`
       author
       slug
       content {
-        content
+        json
       }
       media {
         file {
