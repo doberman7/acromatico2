@@ -31,7 +31,7 @@ class BlogPostContentfulTemplate extends React.Component {
                 display: "block",
               }}
             >
-              {post.publishDate}
+              by {post.author}
             </p>
             {/* <div
               dangerouslySetInnerHTML={{
