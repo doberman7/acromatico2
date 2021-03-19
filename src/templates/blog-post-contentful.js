@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import get from "lodash/get";
 import Layout from "../components/layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
@@ -10,7 +9,6 @@ class BlogPostContentfulTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulPost;
     const baseURL = "https:";
-    // https: console.log(baseURL + post.media.file.url);
     const image = baseURL + post.media.file.url;
 
     return (
@@ -26,7 +24,18 @@ class BlogPostContentfulTemplate extends React.Component {
             >
               SUBTITTLE: {post.subtitle}
             </p>
-            <img src={image} alt="A dog smiling in a party hat" />;
+            <img
+              src={image}
+              alt="A dog smiling in a party hat"
+              style={{
+                width: "50%",
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `center`,
+                listStyle: `none`,
+                padding: 0,
+              }}
+            />
             <p> {documentToReactComponents(post.content.json)}</p>
           </div>
         </div>
