@@ -1,8 +1,5 @@
-# Acromatico Prueba tecnica
-
-Prueba Tecnica:
-
-Crear Blog con Gstsby, conectar con Contentfull y desplegar en Netlify
+# Gastsby, Contentfull y Netlify
+ Blog con Gastsby, conectar con Contentfull y desplegar en Netlify
 
 See our live version [live version](https://mystifying-davinci-a8c977.netlify.app/).
 
