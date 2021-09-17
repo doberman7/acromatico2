@@ -31,7 +31,6 @@ if (process.env.CONTENTFUL_HOST) {
 }
 
 const { spaceId, accessToken } = contentfulConfig;
-console.log(contentfulConfig);
 
 if (!spaceId || !accessToken) {
   throw new Error(
